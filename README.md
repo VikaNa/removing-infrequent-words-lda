@@ -20,6 +20,7 @@ In our analysis, we consider two DGPs with the following characteristics:
 |DGP1|1,000     |3,000              |30,000       | 50       |
 |DGP2|10,000    |150                |20,000       | 15       |
 </center>
+
 The algorithm for generating a synthetic text corpus is presented in [corpus generation](generate_corpus.py).
 
 2. Remove infrequent words
