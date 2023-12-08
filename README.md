@@ -20,14 +20,20 @@ In our analysis, we consider two DGPs with the following characteristics:
 |DGP1|1,000     |3,000              |30,000       | 50       |
 |DGP2|10,000    |150                |20,000       | 15       |
 </center>
+The algorithm for generating a synthetic text corpus is presented in [corpus generation](generate_corpus.py).
 
 2. Remove infrequent words
 In our analysis, we consider the folloqing vocabulary pruning technques. 
 - Document based frequency: remove words for which the frequency of showing up across the documents in the corpus is below the defined relative threshold.
-- TF-IDF values: remove words with low TF-IDF values.
+- TF-IDF values: remove words with low TF-IDF values. 
 - Absolute terms frequency: remove terms from the vocabulary the frequency of which in the corpus is below the defined absolute threshold.
+
+After a corpus has been generated, different metrics could be applied to remove the infrequent words and to subsequently build a document-term-frequency (DTM) matrix which is needed as input for LDA models. To ensure the comparability of the metrics, we control for vocabulary size resulted when applied one of the techniques. For exanple, we start with document-based vocabulary pruning. If applying a cut-off value of 6% results in a vocabulary size of about 10,000 terms, we consider only 10,0000 terms with the highest TF-IDF values (TF-IDF technique) and highest absolute probability (absolute term frequency technique). For this step see [this script](extract_count_data.py).     
+
 3. Estimate models
-For each of the defined DGPs, we 
+
+For each corpus in each of the defined DGPs, selveral LDA models are calculated using different DTM resulted from the chosen technqiue and interval. Example is presented [here](estimate_lda_models.py)   
+
 4. Calculate metrics
 
 <h2 align="center">References</h2>
